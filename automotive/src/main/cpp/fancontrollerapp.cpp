@@ -78,4 +78,11 @@ Java_com_example_fancontrollerapp_NativeUtils_getFanSpeedHal(
     return isFanOn ? fanSpeed : 0;
 }
 
+JNIEXPORT jboolean JNICALL
+Java_com_example_fancontrollerapp_NativeUtils_isFanOnHal(
+        JNIEnv* env,
+        jclass javaClass) {
+    return isFanOn;
+}
+
 }
