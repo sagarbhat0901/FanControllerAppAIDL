@@ -5,19 +5,23 @@ package com.example.fancontrollerapp;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import android.util.Log;
 import android.widget.Toast;
 
 public class FanSpeedControlService extends Service {
+
+    private int fanSpeed = 0;
+    private boolean isFanOn = false;
 
     // Implementation of the AIDL Interface
     private final IFanSpeedControlService.Stub binder = new IFanSpeedControlService.Stub() {
         @Override
         public void increaseFanSpeed(){
-            if (!NativeUtils.isFanOnHal()) {
-                Toast.makeText(getApplicationContext(), "Turn On the Fan first", Toast.LENGTH_SHORT).show();
-            } else if (!NativeUtils.increaseFanSpeedHal()) {
-                Toast.makeText(getApplicationContext(), "Fan speed is already at maximum", Toast.LENGTH_SHORT).show();
+            if (isFanOn) {
+                if (fanSpeed < 50 && fanSpeed >= 0) {
+                    fanSpeed += 10;
+                } else if (fanSpeed >= 50) {
+                    Toast.makeText(getApplicationContext(), "Fan speed is already at maximum", Toast.LENGTH_SHORT).show();
+                }
             }
             else if (!isFanOn) {
                 Toast.makeText(getApplicationContext(), "Turn On the Fan first", Toast.LENGTH_SHORT).show();
@@ -27,10 +31,12 @@ public class FanSpeedControlService extends Service {
 
         @Override
         public void decreaseFanSpeed(){
-            if (!NativeUtils.isFanOnHal()) {
-                Toast.makeText(getApplicationContext(), "Turn On the Fan first", Toast.LENGTH_SHORT).show();
-            } else if (!NativeUtils.decreaseFanSpeedHal()) {
-                Toast.makeText(getApplicationContext(), "Fan speed is already at minimum", Toast.LENGTH_SHORT).show();
+            if (isFanOn) {
+                if(fanSpeed > 0 && fanSpeed <= 50) {
+                    fanSpeed -= 10;
+                } else if (fanSpeed <= 0) {
+                    Toast.makeText(getApplicationContext(), "Fan speed is already at minimum", Toast.LENGTH_SHORT).show();
+                }
             }
             else if (!isFanOn) {
                 Toast.makeText(getApplicationContext(), "Turn On the Fan first", Toast.LENGTH_SHORT).show();
@@ -40,26 +46,28 @@ public class FanSpeedControlService extends Service {
 
         @Override
         public void turnFanOn() {
-            if (!NativeUtils.turnFanOnHal()) {
+            if (isFanOn) {
                 Toast.makeText(getApplicationContext(), "Fan is already on", Toast.LENGTH_SHORT).show();
             }
             else {
+                isFanOn = true;
                 Toast.makeText(getApplicationContext(), "Fan turned on", Toast.LENGTH_SHORT).show();
             }
         }
 
         @Override
         public void turnFanOff() {
-            if (!NativeUtils.turnFanOffHal()) {
+            if (!isFanOn) {
                 Toast.makeText(getApplicationContext(), "Fan is already off", Toast.LENGTH_SHORT).show();
             } else {
+                isFanOn = false;
                 Toast.makeText(getApplicationContext(), "Fan turned off", Toast.LENGTH_SHORT).show();
             }
         }
 
         @Override
         public int getFanSpeed(){
-            return NativeUtils.getFanSpeedHal();
+            return isFanOn ? fanSpeed : 0;
         }
     };
 
