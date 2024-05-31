@@ -11,4 +11,5 @@ public class NativeUtils {
     public static native boolean turnFanOnHal();
     public static native boolean turnFanOffHal();
     public static native int getFanSpeedHal();
+    public static native boolean isFanOnHal();
 }
