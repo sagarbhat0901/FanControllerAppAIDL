@@ -23,6 +23,10 @@ public class FanSpeedControlService extends Service {
                     Toast.makeText(getApplicationContext(), "Fan speed is already at maximum", Toast.LENGTH_SHORT).show();
                 }
             }
+            else if (!isFanOn) {
+                Toast.makeText(getApplicationContext(), "Turn On the Fan first", Toast.LENGTH_SHORT).show();
+
+            }
         }
 
         @Override
@@ -33,6 +37,10 @@ public class FanSpeedControlService extends Service {
                 } else if (fanSpeed <= 0) {
                     Toast.makeText(getApplicationContext(), "Fan speed is already at minimum", Toast.LENGTH_SHORT).show();
                 }
+            }
+            else if (!isFanOn) {
+                Toast.makeText(getApplicationContext(), "Turn On the Fan first", Toast.LENGTH_SHORT).show();
+
             }
         }
 
