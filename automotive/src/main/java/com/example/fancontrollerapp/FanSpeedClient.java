@@ -8,19 +8,33 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
 
+/**
+ * Client class for interacting with the FanSpeedControlService.
+ * Provides methods to bind/unbind the service and to control the fan speed.
+ */
 public class FanSpeedClient {
 
     private IFanSpeedControlService fanSpeedControlService;
     private boolean isServiceConnected = false;
 
     private ServiceConnection serviceConnection = new ServiceConnection() {
+        /**
+         * Called when the service is connected.
+         *
+         * @param name    The name of the component.
+         * @param service The IBinder of the service.
+         */
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             fanSpeedControlService = IFanSpeedControlService.Stub.asInterface(service);
             isServiceConnected = true;
-
         }
 
+        /**
+         * Called when the service is disconnected.
+         *
+         * @param name The name of the component.
+         */
         @Override
         public void onServiceDisconnected(ComponentName name) {
             fanSpeedControlService = null;
@@ -28,12 +42,22 @@ public class FanSpeedClient {
         }
     };
 
+    /**
+     * Binds to the FanSpeedControlService.
+     *
+     * @param context The context to use for binding the service.
+     */
     public void bindService(Context context) {
         Intent intent = new Intent(context, FanSpeedControlService.class);
-        intent.setPackage("com.example.fancontroller");
+        intent.setPackage("com.example.fancontrollerapp");
         context.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
     }
 
+    /**
+     * Unbinds from the FanSpeedControlService.
+     *
+     * @param context The context to use for unbinding the service.
+     */
     public void unbindService(Context context) {
         if (isServiceConnected) {
             context.unbindService(serviceConnection);
@@ -41,6 +65,10 @@ public class FanSpeedClient {
         }
     }
 
+    /**
+     * Increases the fan speed by 1.
+     * Handles RemoteException if there is an issue with the remote service.
+     */
     public void increaseFanSpeed() {
         try {
             if (fanSpeedControlService != null) {
@@ -51,6 +79,10 @@ public class FanSpeedClient {
         }
     }
 
+    /**
+     * Decreases the fan speed by 1.
+     * Handles RemoteException if there is an issue with the remote service.
+     */
     public void decreaseFanSpeed() {
         try {
             if (fanSpeedControlService != null) {
@@ -61,6 +93,10 @@ public class FanSpeedClient {
         }
     }
 
+    /**
+     * Turns the fan on.
+     * Handles RemoteException if there is an issue with the remote service.
+     */
     public void turnFanOn() {
         try {
             if (fanSpeedControlService != null) {
@@ -71,6 +107,10 @@ public class FanSpeedClient {
         }
     }
 
+    /**
+     * Turns the fan off.
+     * Handles RemoteException if there is an issue with the remote service.
+     */
     public void turnFanOff() {
         try {
             if (fanSpeedControlService != null) {
@@ -81,6 +121,12 @@ public class FanSpeedClient {
         }
     }
 
+    /**
+     * Retrieves the current fan speed.
+     * Handles RemoteException if there is an issue with the remote service.
+     *
+     * @return the current fan speed, or 0 if the service is not connected.
+     */
     public int getFanSpeed() {
         try {
             if (fanSpeedControlService != null) {
@@ -92,4 +138,3 @@ public class FanSpeedClient {
         return 0;
     }
 }
-

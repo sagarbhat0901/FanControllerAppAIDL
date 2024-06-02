@@ -7,6 +7,7 @@ package com.example.fancontrollerapp;
 // Declare any non-default types here with import statements
 
 interface IFanSpeedControlService {
+
     // Method to increase fan speed
     void increaseFanSpeed();
 
