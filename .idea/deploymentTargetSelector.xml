@@ -4,10 +4,10 @@
     <selectionStates>
       <SelectionState runConfigName="automotive">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-06-02T10:19:39.279318200Z">
+        <DropdownSelection timestamp="2024-06-03T10:08:34.005446900Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\sagarb\.android\avd\Copy_of_Automotive_1024p_landscape_Edited_API_34.avd" />
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\sagarb\.android\avd\Pixel_Fold_API_34.avd" />
             </handle>
           </Target>
         </DropdownSelection>

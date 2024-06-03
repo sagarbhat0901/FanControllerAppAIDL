@@ -6,6 +6,8 @@
         android:name="android.hardware.type.automotive"
         android:required="true" />
 
+    <uses-permission android:name="com.android.car.permission.BIND_CAR_APP_SERVICE" />
+
     <application
         android:allowBackup="true"
         android:appCategory="audio"
@@ -15,6 +17,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FanControllerApp"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="androidx.car.app.minCarApiLevel"
+            android:value="1"/>
         <service
             android:name=".FanSpeedControlService"
             android:enabled="true"
@@ -23,15 +29,26 @@
                 <action android:name="com.example.fancontroller.IFanSpeedControlService" />
             </intent-filter>
         </service>
-
-        <activity
-            android:name=".MainActivity"
+        <service
+            android:name=".MainCarAppService"
             android:exported="true">
             <intent-filter>
+                <action android:name="androidx.car.app.CarAppService"/>
+                <category android:name="androidx.car.app.category.PROJECTION"/>
+            </intent-filter>
+        </service>
+        <activity
+            android:name="androidx.car.app.activity.CarAppActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.DeviceDefault.Light.DarkActionBar">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <meta-data
+                android:name="distractionOptimized"
+                android:value="true" />
         </activity>
     </application>
 
