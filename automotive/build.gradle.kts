@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.fancontrollerapp"
-        minSdk = 28
+        minSdk = 29
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -51,7 +51,11 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation ("androidx.car.app:app:1.7.0-alpha02")
+    implementation("androidx.car.app:app-automotive:1.7.0-alpha02")
+    implementation(libs.firebase.sessions)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    testImplementation("androidx.car.app:app-testing:1.7.0-alpha02")
 }

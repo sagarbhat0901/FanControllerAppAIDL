@@ -16,6 +16,8 @@ public class FanSpeedClient {
 
     private IFanSpeedControlService fanSpeedControlService;
     private boolean isServiceConnected = false;
+    Context context;
+
 
     private ServiceConnection serviceConnection = new ServiceConnection() {
         /**
@@ -48,8 +50,8 @@ public class FanSpeedClient {
      * @param context The context to use for binding the service.
      */
     public void bindService(Context context) {
-        Intent intent = new Intent(context, FanSpeedControlService.class);
-        intent.setPackage("com.example.fancontrollerapp");
+        Intent intent = new Intent(context.getApplicationContext(), FanSpeedControlService.class);
+        intent.setPackage("com.example.fancontrollerapp.FanSpeedService");
         context.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
     }
 
