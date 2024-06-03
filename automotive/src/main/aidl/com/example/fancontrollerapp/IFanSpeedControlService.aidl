@@ -3,9 +3,6 @@ package com.example.fancontrollerapp;
 
 // Declare any non-default types here with import statements
 
-
-// Declare any non-default types here with import statements
-
 interface IFanSpeedControlService {
 
     // Method to increase fan speed
@@ -22,4 +19,7 @@ interface IFanSpeedControlService {
 
     // Method to get the current fan speed
     int getFanSpeed();
+
+    // Method to get the current fan on/off status
+    boolean isFanOn();
 }

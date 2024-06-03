@@ -3,6 +3,7 @@ package com.example.fancontrollerapp;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.os.RemoteException;
 import android.widget.Toast;
 
 /**
@@ -73,6 +74,11 @@ public class FanSpeedControlService extends Service {
         @Override
         public int getFanSpeed() {
             return NativeUtils.getFanSpeedHal();
+        }
+
+        @Override
+        public boolean isFanOn() throws RemoteException {
+            return NativeUtils.isFanOnHal();
         }
     };
 
