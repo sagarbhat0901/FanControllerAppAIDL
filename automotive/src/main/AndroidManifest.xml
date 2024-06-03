@@ -24,15 +24,28 @@
             </intent-filter>
         </service>
 
-        <activity
-            android:name=".MainActivity"
+        <service
+            android:name=".FanControllerCarAppService"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="androidx.car.app.CarAppService" />
             </intent-filter>
-        </activity>
+        </service>
+
+        <uses-library
+            android:name="androidx.car.app"
+            android:required="true" />
+
+
+             <!--   <activity
+                    android:name=".MainActivity"
+                    android:exported="true">
+                    <intent-filter>
+                        <action android:name="android.intent.action.MAIN" />
+
+                        <category android:name="android.intent.category.LAUNCHER" />
+                    </intent-filter>
+                </activity>-->
     </application>
 
 </manifest>

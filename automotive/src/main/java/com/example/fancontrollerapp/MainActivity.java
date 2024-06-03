@@ -1,3 +1,4 @@
+/*
 package com.example.fancontrollerapp;
 
 import android.os.Bundle;
@@ -58,3 +59,4 @@ public class MainActivity extends AppCompatActivity {
         fanSpeedClient.unbindService(this);
     }
 }
+*/

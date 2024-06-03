@@ -1,5 +1,6 @@
-package com.example.fancontrollerapp;
 
+package com.example.fancontrollerapp;
+/*
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -90,6 +91,65 @@ public class FanSpeedClient {
             Log.e("FanSpeedClient", "RemoteException", e);
         }
         return 0;
+    }
+}
+
+*/
+
+
+
+import android.content.Context;
+
+public class FanSpeedClient {
+
+    private boolean isFanOn;
+    private int fanSpeed;
+
+    // Initialize your client and any necessary bindings
+    public void bindService(Context context) {
+        // Bind to your fan service
+        // For demo purposes, let's assume fan is off and speed is 0
+        isFanOn = false;
+        fanSpeed = 0;
+    }
+
+    public void unbindService(Context context) {
+        // Unbind from your fan service
+    }
+
+    public void increaseFanSpeed() {
+        // Increase the fan speed
+        if (isFanOn) {
+            fanSpeed = Math.min(fanSpeed + 1, 5); // Assume max speed is 5
+        }
+    }
+
+    public void decreaseFanSpeed() {
+        // Decrease the fan speed
+        if (isFanOn) {
+            fanSpeed = Math.max(fanSpeed - 1, 0);
+        }
+    }
+
+    public void turnFanOn() {
+        // Turn the fan on
+        isFanOn = true;
+    }
+
+    public void turnFanOff() {
+        // Turn the fan off
+        isFanOn = false;
+        fanSpeed = 0;
+    }
+
+    public int getFanSpeed() {
+        // Return the current fan speed
+        return fanSpeed;
+    }
+
+    public boolean isFanOn() {
+        // Return whether the fan is on
+        return isFanOn;
     }
 }
 

@@ -4,10 +4,10 @@
     <selectionStates>
       <SelectionState runConfigName="automotive">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-05-30T10:48:29.314955600Z">
+        <DropdownSelection timestamp="2024-06-03T06:29:12.414904200Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\sagarb\.android\avd\Pixel_Fold_API_34.avd" />
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\kaj\.android\avd\Volvo_XC40_API_29_2.avd" />
             </handle>
           </Target>
         </DropdownSelection>

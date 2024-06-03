@@ -2,3 +2,15 @@
 
     <style name="Theme.FanControllerApp" parent="Theme.Material3.DayNight.NoActionBar" />
 </resources>
+
+<!--
+<resources>
+    <style name="Theme.FanControllerApp" parent="Theme.Material3.DayNight.NoActionBar">
+        &lt;!&ndash; Customize your theme here. &ndash;&gt;
+        &lt;!&ndash; Example customization &ndash;&gt;
+        <item name="colorPrimary">@color/your_color_primary</item>
+        <item name="colorPrimaryVariant">@color/your_color_primary_variant</item>
+        <item name="colorOnPrimary">@color/your_color_on_primary</item>
+    </style>
+</resources>
+-->
