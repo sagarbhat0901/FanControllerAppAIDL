@@ -139,4 +139,15 @@ public class FanSpeedClient {
         }
         return 0;
     }
+
+    public boolean isFanOn() {
+        try {
+            if (fanSpeedControlService != null) {
+                return fanSpeedControlService.isFanOn();
+            }
+        } catch (RemoteException e) {
+            Log.e("FanSpeedClient", "RemoteException", e);
+        }
+        return false;
+    }
 }
