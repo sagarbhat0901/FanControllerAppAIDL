@@ -19,7 +19,7 @@
 #include <jni.h>
 
 // Global variables to maintain fan state
-int fanSpeed = 0;
+int fanSpeed = 1;
 bool isFanOn = false;
 
 extern "C" {
@@ -57,7 +57,7 @@ Java_com_example_fancontrollerapp_NativeUtils_decreaseFanSpeedHal(
         JNIEnv* env,
         jclass javaClass) {
     if (isFanOn) {
-        if (fanSpeed > 0 && fanSpeed <= 5) {
+        if (fanSpeed > 1 && fanSpeed <= 5) {
             fanSpeed --;
             return true;
         }
