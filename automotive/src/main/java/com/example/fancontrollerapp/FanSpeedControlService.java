@@ -76,6 +76,11 @@ public class FanSpeedControlService extends Service {
             return NativeUtils.getFanSpeedHal();
         }
 
+        /**
+         * Retrieves the fan on/off status.
+         *
+         * @return true if fan is on otherwise false.
+         */
         @Override
         public boolean isFanOn() throws RemoteException {
             return NativeUtils.isFanOnHal();
