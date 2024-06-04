@@ -47,13 +47,12 @@ android {
 
 dependencies {
 
-    implementation(libs.appcompat)
+    //implementation(libs.appcompat)
     implementation(libs.material)
-    implementation(libs.activity)
-    implementation(libs.constraintlayout)
+    //implementation(libs.activity)
+    //implementation(libs.constraintlayout)
     implementation ("androidx.car.app:app:1.7.0-alpha02")
     implementation("androidx.car.app:app-automotive:1.7.0-alpha02")
-    implementation(libs.firebase.sessions)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
