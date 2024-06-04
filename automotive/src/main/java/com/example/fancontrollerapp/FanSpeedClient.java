@@ -140,6 +140,12 @@ public class FanSpeedClient {
         return 0;
     }
 
+    /**
+     * Checks if the fan is currently on.
+     * Handles RemoteException if there is an issue with the remote service.
+     *
+     * @return true if the fan is on, false otherwise or if the service is not connected.
+     */
     public boolean isFanOn() {
         try {
             if (fanSpeedControlService != null) {
